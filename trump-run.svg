@@ -1,338 +1,419 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200">
   <defs>
     <style>
-      /* Animation keyframes */
-      @keyframes run {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-8px); }
-      }
-      @keyframes runLegs {
-        0%, 100% { transform: scaleX(1); }
-        50% { transform: scaleX(-1); }
-      }
-      @keyframes collectMoney {
-        0% { transform: translateX(800px) rotate(0deg); opacity: 1; }
-        80% { opacity: 1; }
-        90% { opacity: 0; transform: translateX(80px) rotate(720deg); }
-        100% { opacity: 0; transform: translateX(80px); }
-      }
-      @keyframes collectMoney2 {
-        0% { transform: translateX(900px) rotate(0deg); opacity: 1; }
-        80% { opacity: 1; }
-        90% { opacity: 0; transform: translateX(80px) rotate(720deg); }
-        100% { opacity: 0; transform: translateX(80px); }
-      }
-      @keyframes collectMoney3 {
-        0% { transform: translateX(1000px) rotate(0deg); opacity: 1; }
-        80% { opacity: 1; }
-        90% { opacity: 0; transform: translateX(80px) rotate(720deg); }
-        100% { opacity: 0; transform: translateX(80px); }
-      }
-      @keyframes enemyWalk {
-        0% { transform: translateX(850px); }
-        100% { transform: translateX(-100px); }
-      }
-      @keyframes enemyWalk2 {
-        0% { transform: translateX(1200px); }
-        100% { transform: translateX(-100px); }
-      }
-      @keyframes jump {
-        0%, 40%, 100% { transform: translateY(0); }
-        45%, 55% { transform: translateY(-45px); }
-        60%, 75% { transform: translateY(-50px); }
-      }
-      @keyframes cloudMove {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(-200px); }
-      }
-      @keyframes cloudMove2 {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(-300px); }
-      }
-      @keyframes hillMove {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(-100px); }
-      }
-      @keyframes scoreUp {
-        0%, 90% { opacity: 0; }
-        91%, 99% { opacity: 1; transform: translateY(0); }
-        100% { opacity: 0; transform: translateY(-20px); }
-      }
-      @keyframes groundScroll {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(-50px); }
-      }
-      @keyframes hairWave {
-        0%, 100% { transform: skewX(0deg); }
-        25% { transform: skewX(5deg); }
-        75% { transform: skewX(-5deg); }
-      }
-      @keyframes tieWave {
-        0%, 100% { transform: rotate(0deg); }
-        50% { transform: rotate(8deg); }
-      }
-      @keyframes blink {
-        0%, 90%, 100% { transform: scaleY(1); }
-        95% { transform: scaleY(0.1); }
-      }
-      @keyframes sparkle {
-        0%, 100% { opacity: 0; transform: scale(0); }
-        50% { opacity: 1; transform: scale(1); }
+      @keyframes runCycle {
+        0%, 100% { transform: translateX(0) translateY(0); }
+        25% { transform: translateX(2px) translateY(-3px); }
+        50% { transform: translateX(0) translateY(0); }
+        75% { transform: translateX(-2px) translateY(-3px); }
       }
       
-      .trump-body { animation: run 0.3s ease-in-out infinite, jump 4s ease-in-out infinite; }
-      .trump-legs { animation: runLegs 0.15s ease-in-out infinite; }
-      .trump-hair { animation: hairWave 0.3s ease-in-out infinite; }
-      .trump-tie { animation: tieWave 0.3s ease-in-out infinite; transform-origin: top center; }
-      .trump-eyes { animation: blink 3s ease-in-out infinite; transform-origin: center; }
-      .money1 { animation: collectMoney 4s linear infinite; }
-      .money2 { animation: collectMoney2 4s linear infinite 1.3s; }
-      .money3 { animation: collectMoney3 4s linear infinite 2.6s; }
-      .biden1 { animation: enemyWalk 5s linear infinite; }
-      .biden2 { animation: enemyWalk2 5s linear infinite 2.5s; }
-      .cloud1 { animation: cloudMove 20s linear infinite; }
-      .cloud2 { animation: cloudMove2 25s linear infinite; }
-      .hill { animation: hillMove 15s linear infinite; }
-      .ground-pattern { animation: groundScroll 0.5s linear infinite; }
-      .score-popup { animation: scoreUp 4s ease-out infinite; }
-      .sparkle1 { animation: sparkle 0.5s ease-out infinite 0.9s; }
-      .sparkle2 { animation: sparkle 0.5s ease-out infinite 2.2s; }
-      .sparkle3 { animation: sparkle 0.5s ease-out infinite 3.5s; }
+      @keyframes legRun1 {
+        0%, 100% { transform: rotate(-20deg); }
+        50% { transform: rotate(20deg); }
+      }
+      
+      @keyframes legRun2 {
+        0%, 100% { transform: rotate(20deg); }
+        50% { transform: rotate(-20deg); }
+      }
+      
+      @keyframes armSwing1 {
+        0%, 100% { transform: rotate(25deg); }
+        50% { transform: rotate(-25deg); }
+      }
+      
+      @keyframes armSwing2 {
+        0%, 100% { transform: rotate(-25deg); }
+        50% { transform: rotate(25deg); }
+      }
+      
+      @keyframes jump {
+        0%, 100% { transform: translateY(0); }
+        15%, 35% { transform: translateY(-55px); }
+      }
+      
+      @keyframes hairBounce {
+        0%, 100% { transform: translateY(0) rotate(0deg); }
+        25% { transform: translateY(-2px) rotate(3deg); }
+        75% { transform: translateY(-2px) rotate(-3deg); }
+      }
+      
+      @keyframes tieSwing {
+        0%, 100% { transform: rotate(0deg); }
+        25% { transform: rotate(8deg); }
+        75% { transform: rotate(-8deg); }
+      }
+      
+      @keyframes moneyFloat {
+        0% { transform: translateX(850px) translateY(0) rotate(0deg); opacity: 1; }
+        25% { transform: translateX(637px) translateY(-8px) rotate(90deg); opacity: 1; }
+        50% { transform: translateX(425px) translateY(0) rotate(180deg); opacity: 1; }
+        75% { transform: translateX(212px) translateY(-8px) rotate(270deg); opacity: 1; }
+        95% { transform: translateX(50px) translateY(0) rotate(350deg); opacity: 1; }
+        100% { transform: translateX(0px) translateY(-20px) rotate(360deg); opacity: 0; }
+      }
+      
+      @keyframes moneyCollect {
+        0%, 85% { transform: scale(1); opacity: 1; }
+        90% { transform: scale(1.5); opacity: 0.5; }
+        100% { transform: scale(0); opacity: 0; }
+      }
+      
+      @keyframes enemyWalk {
+        0% { transform: translateX(850px); }
+        100% { transform: translateX(-80px); }
+      }
+      
+      @keyframes enemyShuffle {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-2px); }
+      }
+      
+      @keyframes cloudDrift {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-850px); }
+      }
+      
+      @keyframes groundScroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-100px); }
+      }
+      
+      @keyframes hillScroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-400px); }
+      }
+      
+      @keyframes scoreFlash {
+        0%, 80%, 100% { opacity: 0; transform: translateY(0) scale(1); }
+        85% { opacity: 1; transform: translateY(-5px) scale(1.2); }
+        95% { opacity: 1; transform: translateY(-15px) scale(1); }
+      }
+      
+      @keyframes coinSpin {
+        0%, 100% { transform: scaleX(1); }
+        25% { transform: scaleX(0.3); }
+        50% { transform: scaleX(1); }
+        75% { transform: scaleX(0.3); }
+      }
+      
+      .trump-container { animation: jump 3s ease-in-out infinite; }
+      .trump-body { animation: runCycle 0.25s ease-in-out infinite; }
+      .leg1 { animation: legRun1 0.25s ease-in-out infinite; transform-origin: top center; }
+      .leg2 { animation: legRun2 0.25s ease-in-out infinite; transform-origin: top center; }
+      .arm1 { animation: armSwing1 0.25s ease-in-out infinite; transform-origin: top center; }
+      .arm2 { animation: armSwing2 0.25s ease-in-out infinite; transform-origin: top center; }
+      .hair { animation: hairBounce 0.25s ease-in-out infinite; }
+      .tie { animation: tieSwing 0.25s ease-in-out infinite; transform-origin: top center; }
+      
+      .money1 { animation: moneyFloat 4s linear infinite; }
+      .money2 { animation: moneyFloat 4s linear infinite 1.33s; }
+      .money3 { animation: moneyFloat 4s linear infinite 2.66s; }
+      
+      .coin1 { animation: coinSpin 0.4s linear infinite; }
+      .coin2 { animation: coinSpin 0.4s linear infinite 0.1s; }
+      .coin3 { animation: coinSpin 0.4s linear infinite 0.2s; }
+      
+      .enemy1 { animation: enemyWalk 4.5s linear infinite; }
+      .enemy2 { animation: enemyWalk 4.5s linear infinite 2.25s; }
+      .enemy-body { animation: enemyShuffle 0.3s ease-in-out infinite; }
+      
+      .cloud1 { animation: cloudDrift 30s linear infinite; }
+      .cloud2 { animation: cloudDrift 40s linear infinite 5s; }
+      .cloud3 { animation: cloudDrift 35s linear infinite 15s; }
+      
+      .ground-move { animation: groundScroll 0.4s linear infinite; }
+      .hill-move { animation: hillScroll 12s linear infinite; }
+      
+      .score-pop { animation: scoreFlash 4s ease-out infinite; }
     </style>
   </defs>
   
-  <!-- Sky background -->
-  <rect width="800" height="200" fill="#87CEEB"/>
+  <!-- Sky gradient -->
+  <defs>
+    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#87CEEB"/>
+      <stop offset="100%" style="stop-color:#b8e4f9"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="200" fill="url(#skyGrad)"/>
   
   <!-- Clouds -->
   <g class="cloud1">
-    <ellipse cx="150" cy="40" rx="40" ry="20" fill="white"/>
-    <ellipse cx="180" cy="35" rx="30" ry="18" fill="white"/>
-    <ellipse cx="120" cy="42" rx="25" ry="15" fill="white"/>
+    <g transform="translate(100, 25)">
+      <ellipse cx="0" cy="10" rx="30" ry="15" fill="white" opacity="0.9"/>
+      <ellipse cx="25" cy="5" rx="25" ry="12" fill="white" opacity="0.9"/>
+      <ellipse cx="-20" cy="12" rx="20" ry="10" fill="white" opacity="0.9"/>
+    </g>
+    <g transform="translate(500, 35)">
+      <ellipse cx="0" cy="10" rx="25" ry="12" fill="white" opacity="0.9"/>
+      <ellipse cx="20" cy="6" rx="20" ry="10" fill="white" opacity="0.9"/>
+    </g>
   </g>
   <g class="cloud2">
-    <ellipse cx="500" cy="55" rx="35" ry="18" fill="white"/>
-    <ellipse cx="530" cy="50" rx="28" ry="15" fill="white"/>
-    <ellipse cx="475" cy="52" rx="22" ry="14" fill="white"/>
+    <g transform="translate(300, 20)">
+      <ellipse cx="0" cy="10" rx="35" ry="17" fill="white" opacity="0.85"/>
+      <ellipse cx="30" cy="5" rx="28" ry="14" fill="white" opacity="0.85"/>
+      <ellipse cx="-25" cy="12" rx="22" ry="11" fill="white" opacity="0.85"/>
+    </g>
   </g>
-  <g class="cloud1" transform="translate(300, 20)">
-    <ellipse cx="650" cy="30" rx="30" ry="15" fill="white"/>
-    <ellipse cx="675" cy="28" rx="22" ry="12" fill="white"/>
+  <g class="cloud3">
+    <g transform="translate(650, 40)">
+      <ellipse cx="0" cy="8" rx="22" ry="11" fill="white" opacity="0.9"/>
+      <ellipse cx="18" cy="5" rx="18" ry="9" fill="white" opacity="0.9"/>
+    </g>
   </g>
   
-  <!-- Hills background -->
-  <g class="hill">
-    <ellipse cx="100" cy="165" rx="120" ry="40" fill="#228B22"/>
-    <ellipse cx="350" cy="165" rx="150" ry="50" fill="#2E8B2E"/>
-    <ellipse cx="600" cy="165" rx="100" ry="35" fill="#228B22"/>
-    <ellipse cx="850" cy="165" rx="130" ry="45" fill="#2E8B2E"/>
+  <!-- Hills (parallax background) -->
+  <g class="hill-move">
+    <path d="M0,165 Q100,120 200,165 T400,165 T600,165 T800,165 T1000,165 T1200,165" fill="#4a7c3f" opacity="0.6"/>
+    <path d="M-50,165 Q50,130 150,165 T350,165 T550,165 T750,165 T950,165 T1150,165" fill="#3d6b35" opacity="0.7"/>
   </g>
   
   <!-- Ground -->
-  <rect x="0" y="160" width="800" height="40" fill="#8B4513"/>
-  <rect x="0" y="160" width="800" height="8" fill="#A0522D"/>
+  <rect x="0" y="155" width="800" height="45" fill="#8B4513"/>
+  <rect x="0" y="155" width="800" height="6" fill="#a65e2e"/>
   
-  <!-- Ground pattern -->
-  <g class="ground-pattern">
-    <rect x="0" y="168" width="10" height="32" fill="#6B3510"/>
-    <rect x="50" y="168" width="10" height="32" fill="#6B3510"/>
-    <rect x="100" y="168" width="10" height="32" fill="#6B3510"/>
-    <rect x="150" y="168" width="10" height="32" fill="#6B3510"/>
-    <rect x="200" y="168" width="10" height="32" fill="#6B3510"/>
-    <rect x="250" y="168" width="10" height="32" fill="#6B3510"/>
-    <rect x="300" y="168" width="10" height="32" fill="#6B3510"/>
-    <rect x="350" y="168" width="10" height="32" fill="#6B3510"/>
-    <rect x="400" y="168" width="10" height="32" fill="#6B3510"/>
-    <rect x="450" y="168" width="10" height="32" fill="#6B3510"/>
-    <rect x="500" y="168" width="10" height="32" fill="#6B3510"/>
-    <rect x="550" y="168" width="10" height="32" fill="#6B3510"/>
-    <rect x="600" y="168" width="10" height="32" fill="#6B3510"/>
-    <rect x="650" y="168" width="10" height="32" fill="#6B3510"/>
-    <rect x="700" y="168" width="10" height="32" fill="#6B3510"/>
-    <rect x="750" y="168" width="10" height="32" fill="#6B3510"/>
-    <rect x="800" y="168" width="10" height="32" fill="#6B3510"/>
+  <!-- Ground detail (scrolling) -->
+  <g class="ground-move">
+    <g>
+      <!-- Brick pattern -->
+      <rect x="0" y="161" width="48" height="18" fill="#7a3d10" stroke="#5c2d0e" stroke-width="1"/>
+      <rect x="50" y="161" width="48" height="18" fill="#7a3d10" stroke="#5c2d0e" stroke-width="1"/>
+      <rect x="100" y="161" width="48" height="18" fill="#7a3d10" stroke="#5c2d0e" stroke-width="1"/>
+      <rect x="150" y="161" width="48" height="18" fill="#7a3d10" stroke="#5c2d0e" stroke-width="1"/>
+      <rect x="200" y="161" width="48" height="18" fill="#7a3d10" stroke="#5c2d0e" stroke-width="1"/>
+      <rect x="250" y="161" width="48" height="18" fill="#7a3d10" stroke="#5c2d0e" stroke-width="1"/>
+      <rect x="300" y="161" width="48" height="18" fill="#7a3d10" stroke="#5c2d0e" stroke-width="1"/>
+      <rect x="350" y="161" width="48" height="18" fill="#7a3d10" stroke="#5c2d0e" stroke-width="1"/>
+      <rect x="400" y="161" width="48" height="18" fill="#7a3d10" stroke="#5c2d0e" stroke-width="1"/>
+      <rect x="450" y="161" width="48" height="18" fill="#7a3d10" stroke="#5c2d0e" stroke-width="1"/>
+      <rect x="500" y="161" width="48" height="18" fill="#7a3d10" stroke="#5c2d0e" stroke-width="1"/>
+      <rect x="550" y="161" width="48" height="18" fill="#7a3d10" stroke="#5c2d0e" stroke-width="1"/>
+      <rect x="600" y="161" width="48" height="18" fill="#7a3d10" stroke="#5c2d0e" stroke-width="1"/>
+      <rect x="650" y="161" width="48" height="18" fill="#7a3d10" stroke="#5c2d0e" stroke-width="1"/>
+      <rect x="700" y="161" width="48" height="18" fill="#7a3d10" stroke="#5c2d0e" stroke-width="1"/>
+      <rect x="750" y="161" width="48" height="18" fill="#7a3d10" stroke="#5c2d0e" stroke-width="1"/>
+      <rect x="800" y="161" width="48" height="18" fill="#7a3d10" stroke="#5c2d0e" stroke-width="1"/>
+      <rect x="850" y="161" width="48" height="18" fill="#7a3d10" stroke="#5c2d0e" stroke-width="1"/>
+      <!-- Second row offset -->
+      <rect x="-25" y="179" width="48" height="18" fill="#7a3d10" stroke="#5c2d0e" stroke-width="1"/>
+      <rect x="25" y="179" width="48" height="18" fill="#7a3d10" stroke="#5c2d0e" stroke-width="1"/>
+      <rect x="75" y="179" width="48" height="18" fill="#7a3d10" stroke="#5c2d0e" stroke-width="1"/>
+      <rect x="125" y="179" width="48" height="18" fill="#7a3d10" stroke="#5c2d0e" stroke-width="1"/>
+      <rect x="175" y="179" width="48" height="18" fill="#7a3d10" stroke="#5c2d0e" stroke-width="1"/>
+      <rect x="225" y="179" width="48" height="18" fill="#7a3d10" stroke="#5c2d0e" stroke-width="1"/>
+      <rect x="275" y="179" width="48" height="18" fill="#7a3d10" stroke="#5c2d0e" stroke-width="1"/>
+      <rect x="325" y="179" width="48" height="18" fill="#7a3d10" stroke="#5c2d0e" stroke-width="1"/>
+      <rect x="375" y="179" width="48" height="18" fill="#7a3d10" stroke="#5c2d0e" stroke-width="1"/>
+      <rect x="425" y="179" width="48" height="18" fill="#7a3d10" stroke="#5c2d0e" stroke-width="1"/>
+      <rect x="475" y="179" width="48" height="18" fill="#7a3d10" stroke="#5c2d0e" stroke-width="1"/>
+      <rect x="525" y="179" width="48" height="18" fill="#7a3d10" stroke="#5c2d0e" stroke-width="1"/>
+      <rect x="575" y="179" width="48" height="18" fill="#7a3d10" stroke="#5c2d0e" stroke-width="1"/>
+      <rect x="625" y="179" width="48" height="18" fill="#7a3d10" stroke="#5c2d0e" stroke-width="1"/>
+      <rect x="675" y="179" width="48" height="18" fill="#7a3d10" stroke="#5c2d0e" stroke-width="1"/>
+      <rect x="725" y="179" width="48" height="18" fill="#7a3d10" stroke="#5c2d0e" stroke-width="1"/>
+      <rect x="775" y="179" width="48" height="18" fill="#7a3d10" stroke="#5c2d0e" stroke-width="1"/>
+      <rect x="825" y="179" width="48" height="18" fill="#7a3d10" stroke="#5c2d0e" stroke-width="1"/>
+    </g>
   </g>
   
-  <!-- Score display -->
-  <rect x="10" y="10" width="120" height="35" rx="5" fill="rgba(0,0,0,0.7)"/>
-  <text x="20" y="33" font-family="'Press Start 2P', monospace" font-size="12" fill="#FFD700">$999,999</text>
+  <!-- HUD Score -->
+  <rect x="15" y="10" width="130" height="32" rx="5" fill="rgba(0,0,0,0.75)"/>
+  <text x="25" y="31" font-family="Arial Black, sans-serif" font-size="16" fill="#FFD700">$ 1,234,567</text>
   
   <!-- TRUMP CHARACTER -->
-  <g class="trump-body" transform="translate(80, 95)">
-    <!-- Shadow -->
-    <ellipse cx="20" cy="65" rx="18" ry="5" fill="rgba(0,0,0,0.3)"/>
-    
-    <!-- Body/Suit -->
-    <rect x="5" y="30" width="30" height="30" rx="3" fill="#1a1a2e"/>
-    
-    <!-- White shirt -->
-    <rect x="15" y="30" width="10" height="25" fill="white"/>
-    
-    <!-- Red tie -->
-    <g class="trump-tie">
-      <polygon points="20,32 16,60 20,65 24,60" fill="#cc0000"/>
-    </g>
-    
-    <!-- Head -->
-    <ellipse cx="20" cy="20" rx="16" ry="18" fill="#FFCC99"/>
-    
-    <!-- Hair (the famous hair!) -->
-    <g class="trump-hair">
-      <ellipse cx="20" cy="6" rx="18" ry="10" fill="#FFD700"/>
-      <ellipse cx="25" cy="4" rx="12" ry="8" fill="#FFC800"/>
-      <ellipse cx="30" cy="8" rx="8" ry="6" fill="#FFD700"/>
-      <ellipse cx="10" cy="7" rx="10" ry="7" fill="#FFDB4D"/>
-    </g>
-    
-    <!-- Face details -->
-    <g class="trump-eyes">
-      <ellipse cx="14" cy="18" rx="3" ry="2" fill="white"/>
-      <ellipse cx="26" cy="18" rx="3" ry="2" fill="white"/>
-      <circle cx="14" cy="18" r="1.5" fill="#4169E1"/>
-      <circle cx="26" cy="18" r="1.5" fill="#4169E1"/>
-    </g>
-    
-    <!-- Eyebrows -->
-    <path d="M10 14 Q14 12 18 14" stroke="#B8860B" stroke-width="2" fill="none"/>
-    <path d="M22 14 Q26 12 30 14" stroke="#B8860B" stroke-width="2" fill="none"/>
-    
-    <!-- Mouth (smirk) -->
-    <path d="M14 28 Q20 32 26 28" stroke="#CC6666" stroke-width="2" fill="none"/>
-    
-    <!-- Arms -->
-    <rect x="-5" y="32" width="12" height="8" rx="3" fill="#1a1a2e"/>
-    <rect x="33" y="32" width="12" height="8" rx="3" fill="#1a1a2e"/>
-    
-    <!-- Hands -->
-    <circle cx="-2" cy="40" r="5" fill="#FFCC99"/>
-    <circle cx="42" cy="40" r="5" fill="#FFCC99"/>
-    
-    <!-- Legs -->
-    <g class="trump-legs">
-      <rect x="8" y="58" width="10" height="12" fill="#1a1a2e"/>
-      <rect x="22" y="58" width="10" height="12" fill="#1a1a2e"/>
-      <!-- Shoes -->
-      <rect x="5" y="68" width="14" height="6" rx="2" fill="#2F2F2F"/>
-      <rect x="21" y="68" width="14" height="6" rx="2" fill="#2F2F2F"/>
-    </g>
-  </g>
-  
-  <!-- Money/Dollars -->
-  <g class="money1">
-    <rect x="0" y="80" width="30" height="18" rx="2" fill="#85bb65"/>
-    <rect x="2" y="82" width="26" height="14" fill="#6aaa4a"/>
-    <text x="8" y="94" font-family="Arial" font-size="12" font-weight="bold" fill="#1a472a">$</text>
-    <text x="18" y="93" font-family="Arial" font-size="8" fill="#1a472a">100</text>
-  </g>
-  <g class="money2">
-    <rect x="0" y="60" width="30" height="18" rx="2" fill="#85bb65"/>
-    <rect x="2" y="62" width="26" height="14" fill="#6aaa4a"/>
-    <text x="8" y="74" font-family="Arial" font-size="12" font-weight="bold" fill="#1a472a">$</text>
-    <text x="18" y="73" font-family="Arial" font-size="8" fill="#1a472a">100</text>
-  </g>
-  <g class="money3">
-    <rect x="0" y="100" width="30" height="18" rx="2" fill="#85bb65"/>
-    <rect x="2" y="102" width="26" height="14" fill="#6aaa4a"/>
-    <text x="8" y="114" font-family="Arial" font-size="12" font-weight="bold" fill="#1a472a">$</text>
-    <text x="18" y="113" font-family="Arial" font-size="8" fill="#1a472a">100</text>
-  </g>
-  
-  <!-- Sparkles when collecting -->
-  <g class="sparkle1">
-    <polygon points="100,90 103,97 110,97 104,102 107,110 100,105 93,110 96,102 90,97 97,97" fill="#FFD700"/>
-  </g>
-  <g class="sparkle2">
-    <polygon points="100,70 103,77 110,77 104,82 107,90 100,85 93,90 96,82 90,77 97,77" fill="#FFD700"/>
-  </g>
-  <g class="sparkle3">
-    <polygon points="100,110 103,117 110,117 104,122 107,130 100,125 93,130 96,122 90,117 97,117" fill="#FFD700"/>
-  </g>
-  
-  <!-- BIDEN ENEMIES -->
-  <g class="biden1">
-    <!-- Biden character -->
-    <g transform="translate(0, 100)">
-      <!-- Shadow -->
-      <ellipse cx="20" cy="60" rx="15" ry="4" fill="rgba(0,0,0,0.3)"/>
+  <g class="trump-container" transform="translate(100, 85)">
+    <g class="trump-body">
+      <!-- Shadow on ground -->
+      <ellipse cx="18" cy="70" rx="20" ry="6" fill="rgba(0,0,0,0.25)"/>
+      
+      <!-- Back arm -->
+      <g class="arm2" transform="translate(8, 28)">
+        <rect x="-3" y="0" width="8" height="22" rx="3" fill="#1a1a2e"/>
+        <circle cx="1" cy="22" r="5" fill="#FFCC99"/>
+      </g>
+      
+      <!-- Back leg -->
+      <g class="leg2" transform="translate(22, 48)">
+        <rect x="-4" y="0" width="10" height="18" fill="#1a1a2e"/>
+        <rect x="-6" y="16" width="14" height="7" rx="2" fill="#2a2a2a"/>
+      </g>
       
       <!-- Body/Suit -->
-      <rect x="7" y="28" width="26" height="28" rx="3" fill="#2c3e50"/>
+      <rect x="4" y="26" width="28" height="26" rx="4" fill="#1a1a2e"/>
       
-      <!-- White shirt -->
-      <rect x="16" y="28" width="8" height="20" fill="white"/>
+      <!-- White shirt visible -->
+      <rect x="14" y="26" width="8" height="22" fill="#ffffff"/>
       
-      <!-- Blue tie -->
-      <polygon points="20,30 17,52 20,56 23,52" fill="#3498db"/>
+      <!-- Red tie -->
+      <g class="tie">
+        <polygon points="18,28 14,50 18,55 22,50" fill="#cc0000"/>
+        <rect x="15" y="26" width="6" height="4" fill="#cc0000"/>
+      </g>
+      
+      <!-- Front leg -->
+      <g class="leg1" transform="translate(10, 48)">
+        <rect x="-4" y="0" width="10" height="18" fill="#1a1a2e"/>
+        <rect x="-6" y="16" width="14" height="7" rx="2" fill="#2a2a2a"/>
+      </g>
+      
+      <!-- Front arm -->
+      <g class="arm1" transform="translate(26, 28)">
+        <rect x="-3" y="0" width="8" height="22" rx="3" fill="#1a1a2e"/>
+        <circle cx="1" cy="22" r="5" fill="#FFCC99"/>
+      </g>
       
       <!-- Head -->
-      <ellipse cx="20" cy="18" rx="14" ry="16" fill="#FFCC99"/>
+      <ellipse cx="18" cy="15" rx="14" ry="16" fill="#FFCC99"/>
       
-      <!-- White hair -->
-      <ellipse cx="20" cy="6" rx="14" ry="8" fill="white"/>
-      <ellipse cx="12" cy="8" rx="6" ry="5" fill="#f0f0f0"/>
-      <ellipse cx="28" cy="8" rx="6" ry="5" fill="#f0f0f0"/>
+      <!-- Ears -->
+      <ellipse cx="3" cy="15" rx="3" ry="5" fill="#FFCC99"/>
+      <ellipse cx="33" cy="15" rx="3" ry="5" fill="#FFCC99"/>
       
-      <!-- Sunglasses (aviators!) -->
-      <ellipse cx="14" cy="16" rx="6" ry="5" fill="#1a1a1a"/>
-      <ellipse cx="26" cy="16" rx="6" ry="5" fill="#1a1a1a"/>
-      <rect x="19" y="14" width="2" height="3" fill="#1a1a1a"/>
-      <line x1="8" y1="15" x2="2" y2="12" stroke="#1a1a1a" stroke-width="2"/>
-      <line x1="32" y1="15" x2="38" y2="12" stroke="#1a1a1a" stroke-width="2"/>
+      <!-- Hair -->
+      <g class="hair">
+        <path d="M4,12 Q8,0 18,2 Q28,0 32,12 Q35,5 30,0 Q18,-5 6,0 Q1,5 4,12" fill="#FFD700"/>
+        <path d="M6,10 Q10,2 18,4 Q26,2 30,10" fill="#FFC500" opacity="0.7"/>
+        <ellipse cx="28" cy="6" rx="8" ry="5" fill="#FFD700"/>
+        <ellipse cx="8" cy="6" rx="7" ry="4" fill="#FFDB4D"/>
+      </g>
       
-      <!-- Confused expression -->
-      <path d="M14 28 Q20 26 26 28" stroke="#CC9999" stroke-width="2" fill="none"/>
+      <!-- Face -->
+      <!-- Eyes -->
+      <ellipse cx="12" cy="14" rx="4" ry="3" fill="white"/>
+      <ellipse cx="24" cy="14" rx="4" ry="3" fill="white"/>
+      <circle cx="13" cy="14" r="2" fill="#4a90c2"/>
+      <circle cx="25" cy="14" r="2" fill="#4a90c2"/>
+      <circle cx="13.5" cy="13.5" r="0.8" fill="white"/>
+      <circle cx="25.5" cy="13.5" r="0.8" fill="white"/>
       
-      <!-- Legs (shuffling) -->
-      <rect x="10" y="54" width="8" height="10" fill="#2c3e50"/>
-      <rect x="22" y="54" width="8" height="10" fill="#2c3e50"/>
-      <rect x="8" y="62" width="11" height="5" rx="2" fill="#1a1a1a"/>
-      <rect x="21" y="62" width="11" height="5" rx="2" fill="#1a1a1a"/>
+      <!-- Eyebrows -->
+      <path d="M8 10 Q12 7 16 10" stroke="#c9a227" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <path d="M20 10 Q24 7 28 10" stroke="#c9a227" stroke-width="2.5" fill="none" stroke-linecap="round"/>
       
-      <!-- "Sleepy" Z's -->
-      <text x="38" y="5" font-family="Comic Sans MS" font-size="10" fill="#666">z</text>
-      <text x="45" y="-2" font-family="Comic Sans MS" font-size="8" fill="#888">z</text>
-      <text x="50" y="-8" font-family="Comic Sans MS" font-size="6" fill="#aaa">z</text>
+      <!-- Nose -->
+      <ellipse cx="18" cy="20" rx="3" ry="2" fill="#f0b090"/>
+      
+      <!-- Mouth (confident smirk) -->
+      <path d="M12 25 Q18 29 24 25" stroke="#cc8080" stroke-width="2" fill="none" stroke-linecap="round"/>
     </g>
   </g>
   
-  <g class="biden2">
-    <g transform="translate(0, 100)">
-      <ellipse cx="20" cy="60" rx="15" ry="4" fill="rgba(0,0,0,0.3)"/>
-      <rect x="7" y="28" width="26" height="28" rx="3" fill="#2c3e50"/>
-      <rect x="16" y="28" width="8" height="20" fill="white"/>
-      <polygon points="20,30 17,52 20,56 23,52" fill="#3498db"/>
-      <ellipse cx="20" cy="18" rx="14" ry="16" fill="#FFCC99"/>
-      <ellipse cx="20" cy="6" rx="14" ry="8" fill="white"/>
-      <ellipse cx="12" cy="8" rx="6" ry="5" fill="#f0f0f0"/>
-      <ellipse cx="28" cy="8" rx="6" ry="5" fill="#f0f0f0"/>
-      <ellipse cx="14" cy="16" rx="6" ry="5" fill="#1a1a1a"/>
-      <ellipse cx="26" cy="16" rx="6" ry="5" fill="#1a1a1a"/>
-      <rect x="19" y="14" width="2" height="3" fill="#1a1a1a"/>
-      <line x1="8" y1="15" x2="2" y2="12" stroke="#1a1a1a" stroke-width="2"/>
-      <line x1="32" y1="15" x2="38" y2="12" stroke="#1a1a1a" stroke-width="2"/>
-      <path d="M14 28 Q20 26 26 28" stroke="#CC9999" stroke-width="2" fill="none"/>
-      <rect x="10" y="54" width="8" height="10" fill="#2c3e50"/>
-      <rect x="22" y="54" width="8" height="10" fill="#2c3e50"/>
-      <rect x="8" y="62" width="11" height="5" rx="2" fill="#1a1a1a"/>
-      <rect x="21" y="62" width="11" height="5" rx="2" fill="#1a1a1a"/>
-      <text x="38" y="5" font-family="Comic Sans MS" font-size="10" fill="#666">z</text>
-      <text x="45" y="-2" font-family="Comic Sans MS" font-size="8" fill="#888">z</text>
-      <text x="50" y="-8" font-family="Comic Sans MS" font-size="6" fill="#aaa">z</text>
+  <!-- DOLLAR BILLS -->
+  <g class="money1">
+    <g class="coin1" transform="translate(0, 70)">
+      <rect x="0" y="0" width="32" height="20" rx="2" fill="#85bb65" stroke="#2d5016" stroke-width="1"/>
+      <rect x="3" y="3" width="26" height="14" fill="#6aaa4a" stroke="#4a8a3a" stroke-width="0.5"/>
+      <circle cx="16" cy="10" r="6" fill="#85bb65" stroke="#4a8a3a" stroke-width="0.5"/>
+      <text x="12" y="14" font-family="Arial Black" font-size="10" fill="#2d5016">$</text>
+    </g>
+  </g>
+  
+  <g class="money2">
+    <g class="coin2" transform="translate(0, 50)">
+      <rect x="0" y="0" width="32" height="20" rx="2" fill="#85bb65" stroke="#2d5016" stroke-width="1"/>
+      <rect x="3" y="3" width="26" height="14" fill="#6aaa4a" stroke="#4a8a3a" stroke-width="0.5"/>
+      <circle cx="16" cy="10" r="6" fill="#85bb65" stroke="#4a8a3a" stroke-width="0.5"/>
+      <text x="12" y="14" font-family="Arial Black" font-size="10" fill="#2d5016">$</text>
+    </g>
+  </g>
+  
+  <g class="money3">
+    <g class="coin3" transform="translate(0, 90)">
+      <rect x="0" y="0" width="32" height="20" rx="2" fill="#85bb65" stroke="#2d5016" stroke-width="1"/>
+      <rect x="3" y="3" width="26" height="14" fill="#6aaa4a" stroke="#4a8a3a" stroke-width="0.5"/>
+      <circle cx="16" cy="10" r="6" fill="#85bb65" stroke="#4a8a3a" stroke-width="0.5"/>
+      <text x="12" y="14" font-family="Arial Black" font-size="10" fill="#2d5016">$</text>
     </g>
   </g>
   
   <!-- Score popup -->
-  <g class="score-popup">
-    <text x="105" y="85" font-family="Arial" font-size="14" font-weight="bold" fill="#FFD700" stroke="#000" stroke-width="0.5">+$100</text>
+  <g class="score-pop" transform="translate(130, 70)">
+    <text font-family="Arial Black" font-size="14" fill="#FFD700" stroke="#000" stroke-width="0.5">+$100</text>
   </g>
   
-  <!-- Title text -->
-  <text x="550" y="30" font-family="Impact, sans-serif" font-size="24" fill="#cc0000" stroke="#FFD700" stroke-width="1">MAKE GAMING</text>
-  <text x="550" y="55" font-family="Impact, sans-serif" font-size="24" fill="#cc0000" stroke="#FFD700" stroke-width="1">GREAT AGAIN!</text>
-  
-  <!-- Play button hint -->
-  <g transform="translate(620, 140)">
-    <rect x="0" y="0" width="150" height="40" rx="8" fill="#cc0000" stroke="#FFD700" stroke-width="2"/>
-    <text x="20" y="27" font-family="Arial" font-size="14" font-weight="bold" fill="white">▶ PLAY NOW!</text>
+  <!-- BIDEN ENEMIES -->
+  <g class="enemy1">
+    <g class="enemy-body" transform="translate(0, 88)">
+      <!-- Shadow -->
+      <ellipse cx="20" cy="67" rx="18" ry="5" fill="rgba(0,0,0,0.25)"/>
+      
+      <!-- Back leg -->
+      <rect x="24" y="50" width="9" height="15" fill="#2c3e50"/>
+      <rect x="22" y="63" width="12" height="6" rx="2" fill="#1a1a1a"/>
+      
+      <!-- Body -->
+      <rect x="6" y="26" width="28" height="28" rx="4" fill="#2c3e50"/>
+      
+      <!-- White shirt -->
+      <rect x="15" y="26" width="10" height="22" fill="white"/>
+      
+      <!-- Blue tie -->
+      <polygon points="20,28 16,48 20,53 24,48" fill="#3498db"/>
+      
+      <!-- Front leg -->
+      <rect x="7" y="50" width="9" height="15" fill="#2c3e50"/>
+      <rect x="5" y="63" width="12" height="6" rx="2" fill="#1a1a1a"/>
+      
+      <!-- Head -->
+      <ellipse cx="20" cy="15" rx="15" ry="17" fill="#FFCC99"/>
+      
+      <!-- White/gray hair -->
+      <ellipse cx="20" cy="3" rx="14" ry="9" fill="#e8e8e8"/>
+      <ellipse cx="10" cy="5" rx="7" ry="6" fill="#f5f5f5"/>
+      <ellipse cx="30" cy="5" rx="7" ry="6" fill="#f5f5f5"/>
+      
+      <!-- Aviator sunglasses -->
+      <ellipse cx="13" cy="14" rx="7" ry="6" fill="#1a1a1a"/>
+      <ellipse cx="27" cy="14" rx="7" ry="6" fill="#1a1a1a"/>
+      <rect x="19" y="12" width="2" height="4" fill="#1a1a1a"/>
+      <line x1="6" y1="13" x2="0" y2="10" stroke="#1a1a1a" stroke-width="2"/>
+      <line x1="34" y1="13" x2="40" y2="10" stroke="#1a1a1a" stroke-width="2"/>
+      <!-- Glass reflection -->
+      <ellipse cx="11" cy="12" rx="2" ry="1.5" fill="#444" opacity="0.4"/>
+      <ellipse cx="25" cy="12" rx="2" ry="1.5" fill="#444" opacity="0.4"/>
+      
+      <!-- Confused mouth -->
+      <path d="M14 28 Q20 25 26 28" stroke="#cc9999" stroke-width="2" fill="none"/>
+      
+      <!-- Zzz sleeping -->
+      <text x="40" y="0" font-family="Comic Sans MS, cursive" font-size="11" fill="#666" font-weight="bold">z</text>
+      <text x="48" y="-8" font-family="Comic Sans MS, cursive" font-size="9" fill="#888" font-weight="bold">z</text>
+      <text x="54" y="-14" font-family="Comic Sans MS, cursive" font-size="7" fill="#aaa" font-weight="bold">z</text>
+    </g>
   </g>
+  
+  <g class="enemy2">
+    <g class="enemy-body" transform="translate(0, 88)">
+      <ellipse cx="20" cy="67" rx="18" ry="5" fill="rgba(0,0,0,0.25)"/>
+      <rect x="24" y="50" width="9" height="15" fill="#2c3e50"/>
+      <rect x="22" y="63" width="12" height="6" rx="2" fill="#1a1a1a"/>
+      <rect x="6" y="26" width="28" height="28" rx="4" fill="#2c3e50"/>
+      <rect x="15" y="26" width="10" height="22" fill="white"/>
+      <polygon points="20,28 16,48 20,53 24,48" fill="#3498db"/>
+      <rect x="7" y="50" width="9" height="15" fill="#2c3e50"/>
+      <rect x="5" y="63" width="12" height="6" rx="2" fill="#1a1a1a"/>
+      <ellipse cx="20" cy="15" rx="15" ry="17" fill="#FFCC99"/>
+      <ellipse cx="20" cy="3" rx="14" ry="9" fill="#e8e8e8"/>
+      <ellipse cx="10" cy="5" rx="7" ry="6" fill="#f5f5f5"/>
+      <ellipse cx="30" cy="5" rx="7" ry="6" fill="#f5f5f5"/>
+      <ellipse cx="13" cy="14" rx="7" ry="6" fill="#1a1a1a"/>
+      <ellipse cx="27" cy="14" rx="7" ry="6" fill="#1a1a1a"/>
+      <rect x="19" y="12" width="2" height="4" fill="#1a1a1a"/>
+      <line x1="6" y1="13" x2="0" y2="10" stroke="#1a1a1a" stroke-width="2"/>
+      <line x1="34" y1="13" x2="40" y2="10" stroke="#1a1a1a" stroke-width="2"/>
+      <ellipse cx="11" cy="12" rx="2" ry="1.5" fill="#444" opacity="0.4"/>
+      <ellipse cx="25" cy="12" rx="2" ry="1.5" fill="#444" opacity="0.4"/>
+      <path d="M14 28 Q20 25 26 28" stroke="#cc9999" stroke-width="2" fill="none"/>
+      <text x="40" y="0" font-family="Comic Sans MS, cursive" font-size="11" fill="#666" font-weight="bold">z</text>
+      <text x="48" y="-8" font-family="Comic Sans MS, cursive" font-size="9" fill="#888" font-weight="bold">z</text>
+      <text x="54" y="-14" font-family="Comic Sans MS, cursive" font-size="7" fill="#aaa" font-weight="bold">z</text>
+    </g>
+  </g>
+  
+  <!-- Title -->
+  <text x="550" y="30" font-family="Impact, Arial Black, sans-serif" font-size="22" fill="#cc0000" stroke="#FFD700" stroke-width="1.5" letter-spacing="1">TRUMP RUN</text>
+  <text x="550" y="52" font-family="Arial, sans-serif" font-size="11" fill="#333" font-weight="bold">Collect 💵 • Dodge 😴</text>
 </svg>
